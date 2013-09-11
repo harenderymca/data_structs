@@ -42,4 +42,23 @@ class BinaryTree
     self
   end
 
+  #find the subtree whose value is (e)
+  def find(e)
+    if self.value == e
+      self
+    else
+      a = nil
+      a = left.find(e) unless left.nil?
+      return a unless a.nil?
+      b = nil
+      b = right.find(e) unless b.nil?
+      b unless b.nil?
+    end
+  end
+
+  #delete (e) from tree, if present
+  def delete(e)
+
+  end
+
 end

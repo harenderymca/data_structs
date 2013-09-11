@@ -22,6 +22,13 @@ describe BinarySearchTree do
       t.right.parent.should eq t
     end
 
+    it 'check that inorder_traversal should always return sorted array' do
+      t = BinarySearchTree.new
+      arr = FakeData.integer_array
+      t.push arr
+      t.inorder_traversal.should eq arr.sort
+    end
+
   end
 
 end
