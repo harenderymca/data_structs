@@ -33,10 +33,11 @@ module FakeData
 
   def self.integer_array(size=100)
     arr = []
-    size.times do
-      arr << (rand*1000).round
+    size.times do |i|
+      arr << i
     end
-    arr
+
+    arr.shuffle
   end
 
 end

@@ -31,4 +31,68 @@ describe BinarySearchTree do
 
   end
 
+  describe 'FIND' do
+    it 'returns the subtree that contains the requested value' do
+      t = BinarySearchTree.new
+      t.push FakeData.integer_array
+      t.find(50).value.should eq 50
+    end
+  end
+
+  describe 'ROOT' do
+    context 'empty_tree' do
+      it 'assets that an empty tree is a root' do
+        t = BinarySearchTree.new
+        t.should be_root
+      end
+    end
+
+    context 'sub_tree' do
+      it 'assets that sub tree is not root' do
+        t = BinarySearchTree.new
+        t.insert 20
+        t.push FakeData.integer_array
+        t.should be_root
+        t.left.each{ |a| a.should_not be_root }
+        t.right.each{ |a| a.should_not be_root }
+      end
+    end
+  end
+
+  describe 'EACH' do
+    it 'traverse a block on each subtree' do
+      t = BinarySearchTree.new
+      t.push FakeData.integer_array
+      v = t.value
+      t.each{ |a| a.value += 1 }
+      t.value.should eq v+1
+    end
+
+    it 'is a second test for each' do
+      t = BinarySearchTree.new
+      '1 2 3 4 5 6 7 8 9'.split(' ').map{ |a| a.to_i }.each{ |n|  t.insert n }
+      t.each{ |a| a.value += 1 }
+      t.inorder_traversal.join(' ').should eq '2 3 4 5 6 7 8 9 10'
+    end
+
+  end
+
+  describe 'DELETE' do
+    it 'deletes the element form the tree' do
+      t = BinarySearchTree.new
+      t.push [1,2,3,4,5,6]
+      #t.size.should eq 6
+      t.inorder_traversal.should eq [1,2,3,4,5,6]
+      t.delete(1)
+      #t.size.should eq 5
+      t.inorder_traversal.should eq [2,3,4,5,6]
+      t = BinarySearchTree.new
+      t.push [10, 7, 13, 4, 8, 12, 15]
+      t.inorder_traversal.should eq [4,7,8,10,12,13,15]
+      t.delete(7)
+      t.inorder_traversal.should eq [4,8,10,12,13,15]
+      t.delete(15).inorder_traversal.should eq [4,8,10,12,13]
+    end
+  end
+
 end

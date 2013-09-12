@@ -42,8 +42,51 @@ class BinarySearchTree
     self
   end
 
-  def delete(e)
+  def delete(element)
+    tree = self.find element
+    if tree
+      succ = tree.successors
 
+      if succ.count == 0
+        if tree.parent.nil?
+          tree.value = nil
+          tree.size = 0
+        else
+          #tree.parents.each{ |p| p.size -= 1 }
+          tree.parent.left = nil if tree.left_child?
+          tree.parent.right = nil if tree.right_child?
+        end
+      end
+
+      if succ.count == 1
+        if tree.parent.nil?
+          tree.value = succ[0].value
+          succ[0].value = element
+          succ[0].delete element
+        else
+          #tree.parents.each{ |p| p.size-= 1 }
+          tree.parent.left = succ[0] if tree.left_child?
+          tree.parent.right = succ[0] if tree.right_child?
+          succ[0].parent = tree.parent
+        end
+      end
+
+      if succ.count == 2
+        if rand.round == 0
+          tmp = tree.value
+          tree.value = tree.left.value
+          tree.left.value = tmp
+          tree.left.delete(element)
+        else
+          tmp = tree.value
+          tree.value = tree.right.value
+          tree.right.value = tmp
+          tree.right.delete element
+        end
+      end
+
+    end
+    self
   end
 
 end
