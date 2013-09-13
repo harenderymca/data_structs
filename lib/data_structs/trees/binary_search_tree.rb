@@ -4,6 +4,7 @@ class BinarySearchTree
 
   #methods that are most unlikely to cause errors
   include TreeUtilities::Methods
+  include TreeUtilities::TreeRotation
 
   def left=(tree)
     raise ArgumentError unless tree.is_a? self.class or tree.nil?

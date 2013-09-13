@@ -95,4 +95,36 @@ describe BinarySearchTree do
     end
   end
 
+  describe 'ROTATION' do
+
+    context 'rotation left' do
+
+      it 'rotates the tree to left' do
+        t = BinarySearchTree.new
+        t.insert 5
+        t.insert 6
+        t.insert 4
+        t.value.should eq 5
+        t.rotate_left.value.should eq 6
+        t.right.should be_nil
+      end
+
+    end
+
+    context 'rotate right' do
+
+      it 'rotates the tree to right' do
+        t = BinarySearchTree.new
+        t.insert 5
+        t.insert 6
+        t.insert 4
+        t.value.should eq 5
+        t.rotate_right.value.should eq 4
+        t.left.should be_nil
+      end
+
+    end
+
+  end
+
 end
