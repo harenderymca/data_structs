@@ -43,6 +43,16 @@ class BinarySearchTree
     self
   end
 
+  #def delete(e)
+  #  if e > self.value
+  #    self.right.delete(e) if right
+  #  elsif e < self.value
+  #    self.left.delete(e) if left
+  #  else
+  #
+  #  end
+  #end
+
   def delete(element)
     tree = self.find element
     if tree
@@ -90,4 +100,19 @@ class BinarySearchTree
     self
   end
 
+  def find(e)
+    if self.value == e
+      self
+    else
+      if e > self.value
+        self.right.find e if right
+      else
+        self.left.find e if left
+      end
+    end
+  end
+
 end
+
+#TODO check optimality for all methods in bstree and avl tree
+#TODO delete is not optimal, optimise

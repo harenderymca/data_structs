@@ -61,18 +61,19 @@ module TreeUtilities
     end
 
     #FINDS THE TREE WHOSE VALUE IS (E)
-    def find(element)
-      if value == element
-        self
-      else
-        a = nil
-        a = left.find element unless left.nil? or left.empty?
-        return a unless a.nil?
-        b = nil
-        b = right.find element unless right.nil? or right.empty?
-        b unless b.nil?
-      end
-    end
+    #find is diff for binary search tree, so not included in common module
+    #def find(element)
+    #  if value == element
+    #    self
+    #  else
+    #    a = nil
+    #    a = left.find element unless left.nil? or left.empty?
+    #    return a unless a.nil?
+    #    b = nil
+    #    b = right.find element unless right.nil? or right.empty?
+    #    b unless b.nil?
+    #  end
+    #end
 
     #RETURNS AN ARRAY WITH [LEFT_CHILD, RIGHT_CHILD]
     def successors
