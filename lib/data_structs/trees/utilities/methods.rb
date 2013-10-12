@@ -128,6 +128,11 @@ module TreeUtilities
       self
     end
 
+    #THIS TO_S METHOD IS JUST FOR DEVELOPMENT
+    #def to_s
+    #  "#{@value}"
+    #end
+
   end
 
 end

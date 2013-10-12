@@ -87,4 +87,41 @@ describe TreeUtilities::TreeBalancing do
     end
   end
 
+  describe '#BALANCE' do
+
+    it 'rotates the tree in order to eliminate the offset in balance_factor' do
+      tree.left.right.should_not be_balanced
+      tree.left.right.should_not be_full_balanced
+      tree.left.right.value.should eq 15
+      tree.left.right.balance
+      tree.left.right.value.should eq 15.1
+      tree.left.right.successors.each{ |s|
+        class <<s
+          include TreeUtilities::TreeBalancing
+        end
+      }
+      tree.left.right.should be_full_balanced
+      tree.should be_full_balanced
+    end
+
+  end
+
+  describe '#FULL_BALANCE' do
+
+    t = BinarySearchTree.dup
+
+    t.class_eval do
+      include TreeUtilities::TreeBalancing
+    end
+
+    it 'fully balances a tree' do
+      tree2 = t.new
+      tree2.push [20, 10, 30, 5, 15, 25, 35, 4, 5.1, 15.1, 25.1, 35.1, 15.2]
+      tree2.should_not be_full_balanced
+      tree2.full_balance
+      tree2.should be_full_balanced
+    end
+
+  end
+
 end
