@@ -11,8 +11,10 @@ describe AVLTree do
 
     it 'is a test for random tree' do
       t = AVLTree.new
-      t.push FakeData.integer_array(2000)
+      tmp = FakeData.integer_array(2000)
+      t.push tmp
       t.should be_full_balanced
+      t.inorder_traversal.should eq tmp.sort
     end
 
   end
