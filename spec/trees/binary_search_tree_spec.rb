@@ -127,4 +127,22 @@ describe BinarySearchTree do
 
   end
 
+  describe 'DEPTH' do
+
+    it 'returns the depth of the tree' do
+      t = BinarySearchTree.new
+      t.depth.should eq 0
+      t.push [6,5,7]
+      t.depth.should eq 2
+      t << 8
+      t.depth.should eq 3
+      t << 4
+      t.depth.should eq 3
+      t.left.depth.should eq 2
+      t.left.left.depth.should eq 1
+      t.left.left.left.should be_nil
+    end
+
+  end
+
 end

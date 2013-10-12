@@ -91,16 +91,41 @@ module TreeUtilities
       self
     end
 
+    #TELLS WHETHER THE SUBTREE IS LEFT CHILD
     def left_child?
       return nil if parent.nil?
       return true if parent.left == self
       false
     end
 
+    #TELLS WHETHER SUBTREE IS RIGHT CHILD
     def right_child?
       return nil if parent.nil?
       return true if parent.right == self
       false
+    end
+
+    #RETURNS THE DEPTH OF THE TREE
+    def depth
+      if empty?
+        0
+      else
+        1 + [ left ? left.depth : 0 , right ? right.depth : 0 ].max
+      end
+    end
+
+    #ALTERNATE METHOD FOR INSERT
+    def <<(e)
+      insert(e)
+    end
+
+    #EMPTIES the tree
+    def empty
+      self.value = nil
+      self.left = nil
+      self.right = nil
+
+      self
     end
 
   end

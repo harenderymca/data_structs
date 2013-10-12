@@ -1,10 +1,10 @@
 module TreeUtilities
   #MODULE
-  #ROTATION IS IMPLEMENTED SEPARATED
+  #ROTATION IS IMPLEMENTED SEPARATELY
   module TreeRotation
 
     def rotate_left
-      raise RuntimeError, 'left rotation on a tree with no right child is not possible' if self.right.nil?
+      raise RuntimeError, 'left rotation on a tree with no right child, is not possible' if self.right.nil?
 
       #insert empty tree b/w left child and self
       tmp = self.left
@@ -28,7 +28,7 @@ module TreeUtilities
     end
 
     def rotate_right
-      raise RuntimeError, 'left rotation on a tree with no right child is not possible' if self.right.nil?
+      raise RuntimeError, 'right rotation on a tree with no left child, is not possible' if self.left.nil?
 
       tmp = self.right
       self.right = self.class.new
