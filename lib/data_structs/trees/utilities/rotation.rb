@@ -28,7 +28,7 @@ module TreeUtilities
     end
 
     def rotate_right
-      raise RuntimeError, 'right rotation on a tree with no left child, is not possible' if self.left.nil?
+      raise RuntimeError, 'right rotation on a tree with no left child, is not possible' if left.nil?
 
       tmp = self.right
       self.right = self.class.new
