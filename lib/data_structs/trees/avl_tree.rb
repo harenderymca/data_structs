@@ -6,6 +6,20 @@ class AVLTree
   include TreeUtilities::Methods
   include TreeUtilities::TreeRotation
 
+  def left=(tree)
+    raise ArgumentError unless tree.is_a? self.class or tree.nil?
+    @left = tree
+    @left.parent = self unless @left.nil?
+    tree
+  end
+
+  def right=(tree)
+    raise ArgumentError unless tree.is_a? self.class or tree.nil?
+    @right = tree
+    @right.parent = self unless @right.nil?
+    tree
+  end
+
   def initialize
     @value = nil
     @left = nil

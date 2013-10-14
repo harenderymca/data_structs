@@ -141,6 +141,7 @@ describe BinarySearchTree do
       t.left.depth.should eq 2
       t.left.left.depth.should eq 1
       t.left.left.left.should be_nil
+      TreeTest.tree_consistent?(t).should be_true
     end
 
   end

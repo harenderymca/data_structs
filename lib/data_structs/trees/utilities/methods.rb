@@ -134,6 +134,20 @@ module TreeUtilities
     #  "#{@value}"
     #end
 
+    def grandparent
+      unless root?
+        self.parent.parent
+      end
+    end
+
+    def uncle
+      g = grandparent
+      if g
+        g.left if right_child?
+        g.right if left_child?
+      end
+    end
+
   end
 
 end
