@@ -11,5 +11,8 @@ require 'data_structs/trees/red_black_tree'
 
 require 'data_structs/lists_and_queues/linked_list'
 
+#SET
+require 'data_structs/set/multiset'
+
 module DataStructs
 end

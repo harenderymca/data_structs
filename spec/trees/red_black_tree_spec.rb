@@ -34,7 +34,6 @@ describe RedBlackTree do
     it 'adds an element and balanced the tree' do
       t = RedBlackTree.new
       t.push FakeData.integer_array
-      puts t.to_s
       #t.should be_full_balanced
     end
 

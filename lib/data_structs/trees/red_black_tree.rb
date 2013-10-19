@@ -79,10 +79,10 @@ class RedBlackTree
     n = self
     if self.right_child? and self.parent.left_child?
       self.parent.rotate_left
-      n = self.parent.left
+      n = n.parent.left
     elsif self.left_child? and parent.right_child?
       self.parent.rotate_right
-      n = self.parent.right
+      n = n.parent.right
     end
     n.insert_case5
   end
@@ -108,9 +108,9 @@ class RedBlackTree
     #end
   end
 
-  def to_s
-    "#{@left.to_s} #{@value}:#{balance_factor} #{@right}"
-  end
+  #def to_s
+  #  "#{@left.to_s} #{@value}:#{balance_factor} #{@right}"
+  #end
 
   private
 
@@ -123,3 +123,5 @@ class RedBlackTree
   end
 
 end
+
+# DELETION
