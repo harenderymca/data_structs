@@ -27,16 +27,18 @@ require_relative '../../spec/spec_helper'
 
 
 
-describe RedBlackTree do
-
-  describe 'INSERT' do
-
-    it 'adds an element and balanced the tree' do
-      t = RedBlackTree.new
-      t.push FakeData.integer_array
-      #t.should be_full_balanced
-    end
-
-  end
-
-end
+#describe RedBlackTree do
+#
+#  describe 'INSERT' do
+#
+#    it 'adds an element and balanced the tree' do
+#      t = RedBlackTree.new
+#      t.push FakeData.integer_array
+#      #t.should be_full_balanced
+#      #TODO this
+#
+#    end
+#
+#  end
+#
+#end
