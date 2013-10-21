@@ -71,4 +71,57 @@ class MaxMinMultiset
     @min = nil
   end
 
+  def add(e)
+    @hash[e] = 0 unless @hash[e]
+    @hash[e] += 1
+
+    #set size
+    @size += 1
+
+    #set max
+    @max = e if @max.nil? or @max < e
+
+    #set min
+    @min = e if @min.nil? or @min > e
+
+    e
+  end
+
+  def <<(e)
+    add(e)
+  end
+
+  def delete(e)
+    if frequency(e) > 0
+
+      @hash[e] -= 1
+      @size -= 1
+
+      if @hash[@max].nil? or @hash[@max] == 0
+        @max = nil
+        @hash.each_pair do |k,f|
+          if f and f > 0
+            @max = k if @max.nil? or @max < k
+          end
+        end
+      end
+
+      if @hash[@min].nil? or @hash[@min] == 0
+        @min = nil
+        @hash.each_pair do |k, f|
+          if f and f > 0
+            @min = k if @min.nil? or @min > k
+          end
+        end
+      end
+
+      e
+    end
+  end
+
+  def frequency(e)
+    return @hash[e] if @hash[e] and @hash[e] > 0
+    0
+  end
+
 end
