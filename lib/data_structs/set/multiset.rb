@@ -115,6 +115,7 @@ class MaxMinMultiset
         end
       end
 
+      @hash.delete(e) if @hash[e] == 0
       e
     end
   end
